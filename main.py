@@ -1,4 +1,5 @@
-import pioneer_client, pioneer_server
+import telnet_server as server
+from pioneer_avr import client as avr
 from twisted.internet import reactor
 
 def main():
@@ -6,13 +7,13 @@ def main():
     avr_port = 23
     local_port = 8900
 
-    avr = pioneer_client.PioneerClientFactory()
-    server = pioneer_server.PioneerServerFactory()
-    avr.local_server = server
-    server.local_clients = avr
+    my_avr = avr.PioneerClientFactory()
+    my_server = server.TelnetServerFactory()
+    my_avr.local_server = my_server
+    my_server.local_clients = my_avr
 
-    reactor.connectTCP(avr_ip, avr_port, avr)
-    reactor.listenTCP(local_port, server)
+    reactor.connectTCP(avr_ip, avr_port, my_avr)
+    reactor.listenTCP(local_port, my_server)
     reactor.run()
 
 if __name__=='__main__':
