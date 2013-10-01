@@ -11,6 +11,7 @@ class PioneerClient(telnet.Telnet):
     def __init__(self):
         self.pwr = None
         self.vol = None
+        self.mut = None
 
         self.lock = False
         self.cmd_file = 'commands.json'
@@ -69,6 +70,9 @@ class PioneerClient(telnet.Telnet):
             for c in range(4, 32, 2):
                 out += chr(int(fl.group()[c:c+2], 16))
             print(out)
+        mut = re.search('MUT\d', data)
+        if mut:
+            self.mut = mut.group()
 
     def connectionLost(self, reason):
         print('Connection lost: {}'.format(reason))

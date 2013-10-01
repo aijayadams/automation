@@ -20,12 +20,25 @@
     },
     "\\?V": {
         "desc": "Volume Status"
+    },
+    "MO": {
+        "desc": "Mute On"
+    },
+    "MF": {
+        "desc": "Mute Off"
+    },
+    "\\?M": {
+        "desc": "Mute Status"
     }
   },
   "from" : {
     "PWR\\d" : {
       "PWR1" : "Power is off",
       "PWR0" : "Power in on"
+    },
+    "MUT\\d" : {
+      "MUT1" : "Mute is off",
+      "MUT0" : "Mute is on"
     },
     "VL\\d{3}" : {
       "000VL" : "---.-dB",
