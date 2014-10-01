@@ -1,0 +1,187 @@
+{
+  "to" : {
+    "PWON": {
+        "desc": "Power On"
+    },
+    "PWSTANDBY": {
+        "desc": "Power Off"
+    },
+    "PW\\?": {
+        "desc": "Power Status"
+    },
+    "ZMON": {
+        "desc": "Main Zone On"
+    },
+    "ZMOFF": {
+        "desc": "Main Zone Off"
+    },
+    "ZM\\?": {
+        "desc": "Main Zone Status"
+    },
+    "MVUP": {
+        "desc": "Volume Up"
+    },
+    "MVDOWN": {
+        "desc": "Volume Down"
+    },
+    "MV\\d{2}": {
+        "desc": "Volume Set"
+    },
+    "MV\\?": {
+        "desc": "Volume Status"
+    },
+    "MUON": {
+        "desc": "Mute On"
+    },
+    "MUOFF": {
+        "desc": "Mute Off"
+    },
+    "MU\\?": {
+        "desc": "Mute Status"
+    },
+    "SIDVD": {
+        "desc": "Function DVD"
+    },
+    "SIBD": {
+        "desc": "Function BD"
+    },
+    "SITV": {
+        "desc": "Function TV"
+    },
+    "SISAT/CBL": {
+        "desc": "Satellite / Cable"
+    },
+    "SIMPLAY": {
+        "desc": "Media Player"
+    },
+    "SIGAME": {
+        "desc": "Gaming Device"
+    },
+    "SIAUX1": {
+        "desc": "Aux Input 1"
+    },
+    "SIAUX2": {
+        "desc": "Aux Input 2"
+    },
+    "SIBT": {
+        "desc": "Bluetooth"
+    },
+    "SICD": {
+        "desc": "CD"
+    },
+    "SICDR": {
+        "desc": "Function CD-R"
+    }
+  },
+  "from" : {
+    "ZM(ON|OFF)" : {
+      "ZMON" : "Power is on",
+      "ZMOFF" : "Power in off"
+    },
+    "MU(ON|OFF)" : {
+      "MUON" : "Mute is on",
+      "MUOFF" : "Mute is off"
+    },
+    "MV\\d{2}" : {
+      "MV00" : "---.-dB",
+      "MV01" : "-80.0dB",
+      "MV02" : "-79.5dB",
+      "MV03" : "-79.0dB",
+      "MV04" : "-78.5dB",
+      "MV05" : "-78.0dB",
+      "MV06" : "-77.5dB",
+      "MV07" : "-77.0dB",
+      "MV08" : "-76.5dB",
+      "MV09" : "-76.0dB",
+      "MV10" : "-75.5dB",
+      "MV11" : "-75.0dB",
+      "MV12" : "-74.5dB",
+      "MV13" : "-74.0dB",
+      "MV14" : "-73.5dB",
+      "MV15" : "-73.0dB",
+      "MV16" : "-72.5dB",
+      "MV17" : "-72.0dB",
+      "MV18" : "-71.5dB",
+      "MV19" : "-71.0dB",
+      "MV20" : "-70.5dB",
+      "MV21" : "-70.0dB",
+      "MV22" : "-69.5dB",
+      "MV23" : "-69.0dB",
+      "MV24" : "-68.5dB",
+      "MV25" : "-68.0dB",
+      "MV26" : "-67.5dB",
+      "MV27" : "-67.0dB",
+      "MV28" : "-66.5dB",
+      "MV29" : "-66.0dB",
+      "MV30" : "-65.5dB",
+      "MV31" : "-65.0dB",
+      "MV32" : "-64.5dB",
+      "MV33" : "-64.0dB",
+      "MV34" : "-63.5dB",
+      "MV35" : "-63.0dB",
+      "MV36" : "-62.5dB",
+      "MV37" : "-62.0dB",
+      "MV38" : "-61.5dB",
+      "MV39" : "-61.0dB",
+      "MV40" : "-60.5dB",
+      "MV41" : "-60.0dB",
+      "MV42" : "-59.5dB",
+      "MV43" : "-59.0dB",
+      "MV44" : "-58.5dB",
+      "MV45" : "-58.0dB",
+      "MV46" : "-57.5dB",
+      "MV47" : "-57.0dB",
+      "MV48" : "-56.5dB",
+      "MV49" : "-56.0dB",
+      "MV50" : "-55.5dB",
+      "MV51" : "-55.0dB",
+      "MV52" : "-54.5dB",
+      "MV53" : "-54.0dB",
+      "MV54" : "-53.5dB",
+      "MV55" : "-53.0dB",
+      "MV56" : "-52.5dB",
+      "MV57" : "-52.0dB",
+      "MV58" : "-51.5dB",
+      "MV59" : "-51.0dB",
+      "MV60" : "-50.5dB",
+      "MV61" : "-50.0dB",
+      "MV62" : "-49.5dB",
+      "MV63" : "-49.0dB",
+      "MV64" : "-48.5dB",
+      "MV65" : "-48.0dB",
+      "MV66" : "-47.5dB",
+      "MV67" : "-47.0dB",
+      "MV68" : "-46.5dB",
+      "MV69" : "-46.0dB",
+      "MV70" : "-45.5dB",
+      "MV71" : "-45.0dB",
+      "MV72" : "-44.5dB",
+      "MV73" : "-44.0dB",
+      "MV74" : "-43.5dB",
+      "MV75" : "-43.0dB",
+      "MV76" : "-42.5dB",
+      "MV77" : "-42.0dB",
+      "MV78" : "-41.5dB",
+      "MV79" : "-41.0dB",
+      "MV80" : "00.0dB",
+      "MV81" : "-40.0dB",
+      "MV82" : "-39.5dB",
+      "MV83" : "-39.0dB",
+      "MV84" : "-38.5dB",
+      "MV85" : "-38.0dB",
+      "MV86" : "-37.5dB",
+      "MV87" : "-37.0dB",
+      "MV88" : "-36.5dB",
+      "MV89" : "-36.0dB",
+      "MV90" : "-35.5dB",
+      "MV91" : "-35.0dB",
+      "MV92" : "-34.5dB",
+      "MV93" : "-34.0dB",
+      "MV94" : "-33.5dB",
+      "MV95" : "-33.0dB",
+      "MV96" : "-32.5dB",
+      "MV97" : "-32.0dB",
+      "MV98" : "-31.5dB"
+    }
+  }
+}

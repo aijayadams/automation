@@ -48,6 +48,49 @@ class PioneerTelnetServerFactory(protocol.ServerFactory):
         self.local_server = []
 
 
+class MarantzTelnetServer(protocol.Protocol):
+    def dataReceived(self, data):
+        if 'PW?' in data:
+             for online in self.factory.local_clients.online:
+                 if online.pwr:
+                     self.transport.write(online.pwr)
+             return
+        elif 'MV?' in data:
+             for online in self.factory.local_clients.online:
+                 if online.vol:
+                     self.transport.write(online.vol)
+             return
+        elif 'MU?' in data:
+            for online in self.factory.local_clients.online:
+                if online.mut:
+                    self.transport.write(online.mut)
+            return
+        elif '?FRONTPANEL' in data:
+            for online in self.factory.local_clients.online:
+                self.transport.write(online.panel)
+            return
+        vol = re.search('MV\d{1,2}', data)
+        if vol:
+            data = data.replace(vol.group(), vol.group().rjust(4, '0'))
+        print('From {}: {}'.format(self.transport.getHost(), data))
+        for online in self.factory.local_clients.online:
+            online.send_command(data)
+
+    def connectionMade(self):
+        self.factory.online.append(self)
+
+    def connectionLost(self, reason):
+        self.factory.online.remove(self)
+
+
+class MarantzTelnetServerFactory(protocol.ServerFactory):
+    protocol = MarantzTelnetServer
+
+    def __init__(self):
+        self.online = []
+        self.local_server = []
+
+
 class SamsungTelnetServer(protocol.Protocol):
     def dataReceived(self, data):
         print('From {}: {}'.format(self.transport.getHost(), data.strip('\r\n')))
