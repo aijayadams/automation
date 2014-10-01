@@ -7,12 +7,29 @@ import os
 import sys
 import time
 
-class PioneerClient(telnet.Telnet):
+def byte_to_hex(byte):
+    return ''.join( [ "%02X " % ord( x ) for x in byte ] ).strip()
+
+def hex_to_byte(hex):
+    bytes = []
+
+    hex = ''.join( hex.split(" ") )
+    hex = '7E3030' + hex + '0D'
+    checksum = 256
+    for i in range(0, len(hex), 2):
+        dec = int (hex[i:i+2], 16 )
+        bytes.append( chr( dec ) )
+        checksum -= dec
+    if checksum < 0:
+        checksum = 256 + checksum
+    bytes.append(chr(checksum))
+
+    return ''.join( bytes )
+
+class SamsungClient(telnet.Telnet):
     def __init__(self):
         self.pwr = None
         self.vol = None
-        self.mut = None
-        self.panel = 'FP'
 
         self.lock = False
         self.cmd_file = 'commands.json'
@@ -30,26 +47,20 @@ class PioneerClient(telnet.Telnet):
         self.factory.online.append(self)
 
     def dataReceived(self, data):
-        data = data.strip('\r').split('\n')
-        for line in data:
-            if line and line[0] != 'R':
-                print('From AVR: {}'.format(line))
-                self.parse_input(line)
-                for online in self.factory.local_server.online:
-                    online.transport.write(line+'\r\n')
+        print("From TV: " + byte_to_hex(data))
 
     def send_command(self, cmd):
         while self.lock:
             pass
+        cmd = cmd.strip('\n\r')
         success = False
-        for key in self.commands['to']:
-            if re.search(key, cmd) != None:
-                cmd = cmd.strip('\n\r')
-                print('To AVR: {}'.format(cmd))
+        for in_cmd, info in self.commands['to'].iteritems():
+            if re.search('^' + in_cmd + '$', cmd) != None:
                 self.lock = True
-                self.transport.write('\r\n')
                 time.sleep(0.1)
-                self.transport.write('\r'+cmd+'\r')
+                send = hex_to_byte(info['cmd'])
+                print('To TV: {}'.format(byte_to_hex(send)))
+                self.transport.write(send)
                 success = True
                 time.sleep(0.1)
                 self.lock = False
@@ -57,7 +68,6 @@ class PioneerClient(telnet.Telnet):
             for online in self.factory.local_server.online:
                 online.transport.write('1')
         else:
-            print('Invalid command: {}'.format(cmd))
             for online in self.factory.local_server.online:
                 online.transport.write('0')
 
@@ -77,17 +87,13 @@ class PioneerClient(telnet.Telnet):
             out = ''
             for c in range(4, 32, 2):
                 out += chr(int(fl.group()[c:c+2], 16))
-            self.panel = out
             print(out)
-        mut = re.search('MUT\d', data)
-        if mut:
-            self.mut = mut.group()
 
     def connectionLost(self, reason):
         print('Connection lost: {}'.format(reason))
         self.factory.online.remove(self)
 
-class PioneerClientFactory(protocol.ReconnectingClientFactory):
+class SamsungClientFactory(protocol.ReconnectingClientFactory):
     def __init__(self):
         self.online = []
         self.local_clients = []
@@ -97,7 +103,7 @@ class PioneerClientFactory(protocol.ReconnectingClientFactory):
 
     def buildProtocol(self, addr):
         print('Connected to {}'.format(addr))
-        p = PioneerClient()
+        p = SamsungClient()
         p.factory = self
         self.resetDelay()
         return p

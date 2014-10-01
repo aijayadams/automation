@@ -48,22 +48,12 @@ class SamsungClient(telnet.Telnet):
 
     def dataReceived(self, data):
         print("From TV: " + byte_to_hex(data))
-        if '\n' in data:
-            print('newline')
-        if '\r' in data:
-            print('cr')
-#        data = data.strip('\r').split('\n')
-#        for line in data:
-#            if line and line[0] != 'R':
-#                print('From TV: {}'.format(line))
-#                self.parse_input(line)
-#                for online in self.factory.local_server.online:
-#                    online.transport.write(line+'\r\n')
 
     def send_command(self, cmd):
         while self.lock:
             pass
         cmd = cmd.strip('\n\r')
+        success = False
         for in_cmd, info in self.commands['to'].iteritems():
             if re.search('^' + in_cmd + '$', cmd) != None:
                 self.lock = True
@@ -71,8 +61,15 @@ class SamsungClient(telnet.Telnet):
                 send = hex_to_byte(info['cmd'])
                 print('To TV: {}'.format(byte_to_hex(send)))
                 self.transport.write(send)
+                success = True
                 time.sleep(0.1)
                 self.lock = False
+        if success:
+            for online in self.factory.local_server.online:
+                online.transport.write('1')
+        else:
+            for online in self.factory.local_server.online:
+                online.transport.write('0')
 
     def parse_input(self, data):
         vol = re.search('VOL\d{3}', data)

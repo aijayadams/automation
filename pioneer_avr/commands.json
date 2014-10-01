@@ -29,6 +29,57 @@
     },
     "\\?M": {
         "desc": "Mute Status"
+    },
+    "04FN": {
+        "desc": "Function DVD"
+    },
+    "25FN": {
+        "desc": "Function BD"
+    },
+    "05FN": {
+        "desc": "Function TV"
+    },
+    "15FN": {
+        "desc": "Function DVR"
+    },
+    "10FN": {
+        "desc": "Function Video 1"
+    },
+    "14FN": {
+        "desc": "Function Video 2"
+    },
+    "19FN": {
+        "desc": "Function HDMI 1"
+    },
+    "20FN": {
+        "desc": "Function HDMI 2"
+    },
+    "21FN": {
+        "desc": "Function HDMI 3"
+    },
+    "22FN": {
+        "desc": "Function HDMI 4"
+    },
+    "23FN": {
+        "desc": "Function HDMI 5"
+    },
+    "26FN": {
+        "desc": "Function HMG"
+    },
+    "17FN": {
+        "desc": "Function USB"
+    },
+    "01FN": {
+        "desc": "Function CD"
+    },
+    "03FN": {
+        "desc": "Function CD-R"
+    },
+    "02FN": {
+        "desc": "Function Tuner"
+    },
+    "12FN": {
+        "desc": "Function Multi Chan"
     }
   },
   "from" : {

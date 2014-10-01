@@ -1,0 +1,86 @@
+{
+  "to" : {
+    "POWER_ON": {
+      "cmd": "30302031",
+      "desc": "Power On"
+    },
+    "POWER_OFF": {
+      "cmd": "30302030",
+      "desc": "Power Off"
+    },
+    "INPUT_HDMI_3": {
+      "cmd": "31322031",
+      "desc": "Input Source HDMI 3"
+    },
+    "SMARTHUB": {
+      "cmd": "0D000079",
+      "desc": "Launch Smart Hub"
+    },
+    "UP": {
+      "cmd": "0D000060",
+      "desc": "Up"
+    },
+    "DOWN": {
+      "cmd": "0D000061",
+      "desc": "Down"
+    },
+    "LEFT": {
+      "cmd": "0D000065",
+      "desc": "Left"
+    },
+    "RIGHT": {
+      "cmd": "0D000062",
+      "desc": "Right"
+    },
+    "MENU": {
+      "cmd": "0D00001A",
+      "desc": "Menu"
+    },
+    "ENTER": {
+      "cmd": "0D000068",
+      "desc": "Enter"
+    },
+    "EXIT": {
+      "cmd": "0D00002D",
+      "desc": "Exit"
+    },
+    "RETURN": {
+      "cmd": "0D0000E5",
+      "desc": "Return"
+    },
+    "TOOLS": {
+      "cmd": "0D00002B",
+      "desc": "Tools"
+    },
+    "MUTE": {
+      "cmd": "0D00003A",
+      "desc": "Mute"
+    },
+    "VOL_UP": {
+      "cmd": "0D0000BA",
+      "desc": "Volume Up"
+    },
+    "VOL_DN": {
+      "cmd": "0D00003B",
+      "desc": "Volume Down"
+    },
+    "LAMP_ECO": {
+        "cmd": "3131302030",
+        "desc": "Bulb Eco Mode"
+    },
+    "LAMP_BRIGHT": {
+        "cmd": "3131302031",
+        "desc": "Bulb Bright Mode"
+    },
+    "DISP_CINEMA": {
+        "cmd": "32302031",
+        "desc": "Cinema Mode"
+    },
+    "DISP_BRIGHT": {
+        "cmd": "32302032",
+        "desc": "Bright Mode"
+    }
+  },
+  "from" : {
+  }
+}
