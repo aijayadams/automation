@@ -5,6 +5,7 @@ from optoma_proj import client as proj
 from twisted.internet import reactor
 
 def main():
+    # Main Function
     avr_ip = '10.50.4.85'
     avr_port = 23
     avr2_ip = '10.50.4.86'
